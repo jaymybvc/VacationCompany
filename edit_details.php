@@ -13,7 +13,7 @@
 
 </head>
 <body>
-      <nav>
+<nav>
         <div id="header" style="background: rgb(199 189 189 / 50%);">
               <ul>
                 <li><a href="index.html"><b>Home</b></a></li>
@@ -23,22 +23,18 @@
               </ul>
             </div>
         </nav>
-    <div class="container">
-      <div class="row">
-        <div class="col-8">
-          
-          <form action="insert.php" method="post" class="mt-5">
+    <form action="edit.php" method="post" class="mt-5">
             <div class="form-group">
                 <label for="email">Email Address:</label>
                 <input type="text" name="email" id="email"  class="form-control">  
             </div>
             <div class="form-group">
               <label for="firstName">First Name:</label>
-              <input type="text" name="first_name" class="form-control" id="firstName">
+              <input type="text" name="first_name" class="form-control" id="first_name">
             </div>
             <div class="form-group">
                 <label for="lastName">Last Name:</label>
-                <input type="text" name="last_name" class="form-control" id="lastName">
+                <input type="text" name="last_name" class="form-control" id="last_name">
             </div>
            
             <div class="form-group">
@@ -53,14 +49,29 @@
            
             <button type="submit" class="btn btn-danger my-3">Submit</button>
           </form>
-        </div>
-      </div>
-      
-      
-    </div>
-    <div class="dark">
-      <p style="margin: 0px;">Jay Patel ©  <span id="year">2023</span>  </p>
-    </div>
-   
+
+    
+<script>
+  $(document).ready(function() {
+    // Function to get URL parameters
+    function getUrlParameter(name) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+      var results = regex.exec(location.search);
+      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    // Get URL parameters and populate form fields
+    var first_name = getUrlParameter("first_name");
+    var last_name = getUrlParameter("last_name");
+    var email = getUrlParameter("email");
+    console.log(first_name)
+    // Populate form fields
+    $("#first_name").val(first_name);
+    $("#last_name").val(last_name);
+    $("#email").val(email);
+  });
+</script>
+
 </body>
 </html>
